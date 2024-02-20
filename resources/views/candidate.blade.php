@@ -148,7 +148,7 @@
                             confirmButtonColor: '#1BC5BD',
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = "{{ route('candidates.index') }}";
+                                window.location.href = "{{ route('candidate.lamaran') }}";
                             }
                         });
                     },

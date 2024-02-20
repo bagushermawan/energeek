@@ -21,13 +21,11 @@ class SkillController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari request
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
         try {
-            // Membuat objek pekerjaan baru
             $skill = new Skill();
             $skill->name = $validatedData['name'];
 
@@ -37,12 +35,10 @@ class SkillController extends Controller
 
             $skill->save();
 
-            // Menampilkan SweetAlert
             Session::flash('sukses', 'Yeahh, Skill berhasil ditambah!');
 
             return redirect()->route('skills.index');
         } catch (\Exception $e) {
-            // Tangani kesalahan jika terjadi
             return redirect()->back()->with('error', 'Failed to create skill. Please try again.');
         }
     }
@@ -54,10 +50,8 @@ class SkillController extends Controller
 
     public function edit($id)
     {
-        // Mengambil data pekerjaan berdasarkan ID
         $skill = Skill::findOrFail($id);
 
-        // Mengembalikan view form edit dengan data pekerjaan yang akan diedit
         return view('admin.skill.edit', compact('skill'));
     }
 
@@ -78,7 +72,6 @@ class SkillController extends Controller
     public function destroy($id)
     {
         try {
-            // Mengambil data pekerjaan berdasarkan ID
             $skill = Skill::findOrFail($id);
             $skill->deleted_by = auth()->id();
 
@@ -89,7 +82,6 @@ class SkillController extends Controller
 
             return redirect()->route('skills.index');
         } catch (\Exception $e) {
-            // Tangani kesalahan jika terjadi
             return redirect()->back()->with('error', 'Failed to delete skill. Please try again.');
         }
     }

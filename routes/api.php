@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\CandidateController;
 use App\Http\Controllers\API\JobController;
 use App\Http\Controllers\API\SkillController;
+use App\Http\Controllers\API\SkillSetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
@@ -41,7 +42,13 @@ Route::put('/skills/{id}', [SkillController::class, 'update']);
 Route::delete('/skills/{id}', [SkillController::class, 'destroy']);
 
 Route::get('/candidates', [CandidateController::class, 'index']);
-Route::post('/candidates', [SkillController::class, 'store']);
-Route::get('/candidates/{id}', [SkillController::class, 'show']);
-Route::put('/candidates/{id}', [SkillController::class, 'update']);
-Route::delete('/candidates/{id}', [SkillController::class, 'destroy']);
+Route::post('/candidates', [CandidateController::class, 'store']);
+Route::get('/candidates/{id}', [CandidateController::class, 'show']);
+Route::put('/candidates/{id}', [CandidateController::class, 'update']);
+Route::delete('/candidates/{id}', [CandidateController::class, 'destroy']);
+
+Route::get('/skillsets', [SkillSetController::class, 'index']);
+Route::post('/skillsets', [SkillSetController::class, 'store']);
+Route::get('/skillsets/{id}', [SkillSetController::class, 'show']);
+Route::put('/skillsets/{id}', [SkillSetController::class, 'update']);
+Route::delete('/skillsets/{id}', [SkillSetController::class, 'destroy']);

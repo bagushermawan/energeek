@@ -21,13 +21,11 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari request
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
         try {
-            // Membuat objek pekerjaan baru
             $job = new Job();
             $job->name = $validatedData['name'];
 
@@ -42,7 +40,6 @@ class JobController extends Controller
 
             return redirect()->route('jobs.index');
         } catch (\Exception $e) {
-            // Tangani kesalahan jika terjadi
             return redirect()->back()->with('error', 'Failed to create job. Please try again.');
         }
     }
@@ -54,10 +51,8 @@ class JobController extends Controller
 
     public function edit($id)
     {
-        // Mengambil data pekerjaan berdasarkan ID
         $job = Job::findOrFail($id);
 
-        // Mengembalikan view form edit dengan data pekerjaan yang akan diedit
         return view('admin.job.edit', compact('job'));
     }
 
@@ -78,7 +73,6 @@ class JobController extends Controller
     public function destroy($id)
     {
         try {
-            // Mengambil data pekerjaan berdasarkan ID
             $job = Job::findOrFail($id);
             $job->deleted_by = auth()->id();
 
@@ -89,7 +83,6 @@ class JobController extends Controller
 
             return redirect()->route('jobs.index');
         } catch (\Exception $e) {
-            // Tangani kesalahan jika terjadi
             return redirect()->back()->with('error', 'Failed to delete job. Please try again.');
         }
     }

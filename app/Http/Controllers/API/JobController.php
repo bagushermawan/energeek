@@ -24,7 +24,7 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($id);
         $job->update($request->all());
-        return response()->json($job);
+        return response()->json(['job' => $job, 'message' => 'Job berhasil diperbarui'], 201);
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class JobController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json($job, 201);
+        return response()->json(['job' => $job, 'message' => 'Job berhasil dibuat'], 201);
     }
 
     public function destroy($id)

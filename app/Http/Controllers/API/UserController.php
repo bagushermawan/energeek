@@ -31,7 +31,7 @@ class UserController extends Controller
             'password' => $hashedPassword,
         ]);
 
-        return response()->json($user, 201);
+        return response()->json(['user' => $user, 'message' => 'Pengguna berhasil dibuat'], 201);
     }
 
     public function show($id)
@@ -44,7 +44,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return response()->json($user);
+        return response()->json(['user' => $user, 'message' => 'Pengguna berhasil diupdate'], 201);
     }
 
     public function destroy($id)
