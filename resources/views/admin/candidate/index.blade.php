@@ -15,6 +15,10 @@
                         @php
                             $colors = ['primary', 'info', 'warning', 'danger']; // Warna yang tersedia
                         @endphp
+                        <div>
+                            <button id="showWithTrashed" class="btn btn-primary">Show With Trashed</button>
+                            <button id="hideWithTrashed" class="btn btn-info">Hide Trashed</button>
+                        </div>
                         <table id="myTable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -24,6 +28,10 @@
                                     <th>Email</th>
                                     <th>Tahun Lahir</th>
                                     <th>Skills</th>
+                                     @if (request()->has('withTrashed') && request()->withTrashed == 'true')
+                                        <th>Deleted at</th>
+                                        <th>Deleted by</th>
+                                    @endif
                                     <th>Action</th>
                                     {{-- <th>Deleted by</th> --}}
                                 </tr>
@@ -44,6 +52,10 @@
                                                 <span class="badge badge-{{ $color }}">{{ $skill->name }}</span>
                                             @endforeach
                                         </td>
+                                        @if (request()->has('withTrashed') && request()->withTrashed == 'true')
+                                            <td>{{ $a->deleted_at ? $a->deleted_at : 'null' }}</td>
+                                            <td>{{ $a->deleter ? $a->deleter->name : 'null' }}</td>
+                                        @endif
                                         <td>
                                             <a href="{{ route('candidates.edit', $a->id) }}"
                                                 class="btn btn-sm btn-primary">Edit</a>
@@ -78,6 +90,26 @@
                 "autoWidth": false
             });
         });
+    </script>
+    <script>
+        // Event listener untuk tombol "Tampilkan Data Dengan Terhapus"
+        document.getElementById('showWithTrashed').addEventListener('click', function() {
+            updateUrlParameter('withTrashed', 'true');
+        });
+
+        // Event listener untuk tombol "Tampilkan Data Tanpa Terhapus"
+        document.getElementById('hideWithTrashed').addEventListener('click', function() {
+            updateUrlParameter('withTrashed', 'false');
+        });
+
+        // Fungsi untuk memperbarui parameter URL dengan nilai yang diberikan
+        function updateUrlParameter(key, value) {
+            var url = new URL(window.location.href);
+            var params = new URLSearchParams(url.search);
+            params.set(key, value);
+            url.search = params.toString();
+            window.location.href = url.toString();
+        }
     </script>
     @include('admin.candidate.alert')
 @endpush

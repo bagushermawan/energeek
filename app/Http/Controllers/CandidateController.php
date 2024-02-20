@@ -11,9 +11,16 @@ use Illuminate\Support\Facades\Validator;
 
 class CandidateController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $candidates = Candidate::all();
+        $jobsQuery = Candidate::query();
+
+        if ($request->has('withTrashed') && $request->withTrashed === 'true') {
+            $jobsQuery->withTrashed();
+        }
+
+        $candidates = $jobsQuery->get();
+
         return view('admin.candidate.index', compact('candidates'));
     }
 

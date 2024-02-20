@@ -8,9 +8,15 @@ use Session;
 
 class SkillController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $skills = Skill::all();
+        $jobsQuery = Skill::query();
+        if ($request->has('withTrashed') && $request->withTrashed === 'true') {
+            $jobsQuery->withTrashed();
+        }
+
+        $skills = $jobsQuery->get();
+
         return view('admin.skill.index', compact('skills'));
     }
 

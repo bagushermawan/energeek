@@ -25,12 +25,20 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <div>
+                            <button id="showWithTrashed" class="btn btn-primary">Show With Trashed</button>
+                            <button id="hideWithTrashed" class="btn btn-info">Hide Trashed</button>
+                        </div>
                         <table id="myTable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Nama Skill</th>
                                     <th>Created by</th>
                                     <th>Updated by</th>
+                                    @if (request()->has('withTrashed') && request()->withTrashed == 'true')
+                                        <th>Deleted at</th>
+                                        <th>Deleted by</th>
+                                    @endif
                                     <th>Action</th>
                                     {{-- <th>Deleted by</th> --}}
                                 </tr>
@@ -41,6 +49,10 @@
                                         <td>{{ $a->name }}</td>
                                         <td>{{ $a->creator ? $a->creator->name : 'null' }}</td>
                                         <td>{{ $a->updater ? $a->updater->name : 'null' }}</td>
+                                        @if (request()->has('withTrashed') && request()->withTrashed == 'true')
+                                            <td>{{ $a->deleted_at ? $a->deleted_at : 'null' }}</td>
+                                            <td>{{ $a->deleter ? $a->deleter->name : 'null' }}</td>
+                                        @endif
                                         <td>
                                             <a href="{{ route('skills.edit', $a->id) }}" class="btn btn-primary">Edit</a>
                                             <form action="{{ route('skills.destroy', $a->id) }}" method="POST"
@@ -74,6 +86,26 @@
                 "autoWidth": false
             });
         });
+    </script>
+    <script>
+        // Event listener untuk tombol "Tampilkan Data Dengan Terhapus"
+        document.getElementById('showWithTrashed').addEventListener('click', function() {
+            updateUrlParameter('withTrashed', 'true');
+        });
+
+        // Event listener untuk tombol "Tampilkan Data Tanpa Terhapus"
+        document.getElementById('hideWithTrashed').addEventListener('click', function() {
+            updateUrlParameter('withTrashed', 'false');
+        });
+
+        // Fungsi untuk memperbarui parameter URL dengan nilai yang diberikan
+        function updateUrlParameter(key, value) {
+            var url = new URL(window.location.href);
+            var params = new URLSearchParams(url.search);
+            params.set(key, value);
+            url.search = params.toString();
+            window.location.href = url.toString();
+        }
     </script>
     @include('admin.skill.alert')
 @endpush

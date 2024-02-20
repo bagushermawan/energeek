@@ -8,9 +8,16 @@ use Session;
 
 class JobController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::all();
+        $jobsQuery = Job::query();
+
+        if ($request->has('withTrashed') && $request->withTrashed === 'true') {
+            $jobsQuery->withTrashed();
+        }
+
+        $jobs = $jobsQuery->get();
+
         return view('admin.job.index', compact('jobs'));
     }
 
