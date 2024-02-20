@@ -144,7 +144,6 @@
                             text: "Lamaran berhasil dikirim!",
                             showConfirmButton: true,
                             confirmButtonText: 'Selesai',
-                            confirmButtonColor: '#fff',
                             confirmButtonColor: '#1BC5BD',
                         }).then((result) => {
                             if (result.isConfirmed) {
@@ -157,9 +156,10 @@
 
                         Swal.fire({
                             icon: 'warning',
-                            title: 'Oops...',
+                            title: 'Terjadi Kesalahan!',
                             text: errorMessage,
-                            confirmButtonText: 'Tutup',
+                            confirmButtonText: 'Baiklah',
+                            confirmButtonColor: '#F64E60',
                         });
                     }
                 });
@@ -168,7 +168,7 @@
                 rules: {
                     name: {
                         required: true,
-                        minlength: 5
+                        minlength: 3
                     },
                     job_id: {
                         required: true,
