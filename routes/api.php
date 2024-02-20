@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\API\CandidateController;
+use App\Http\Controllers\API\JobController;
+use App\Http\Controllers\API\SkillController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +21,27 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+Route::put('/users/{id}', [UserController::class, 'update']);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
+
+Route::get('/jobs', [JobController::class, 'index']);
+Route::post('/jobs', [JobController::class, 'store']);
+Route::get('/jobs/{id}', [JobController::class, 'show']);
+Route::put('/jobs/{id}', [JobController::class, 'update']);
+Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
+
+Route::get('/skills', [SkillController::class, 'index']);
+Route::post('/skills', [SkillController::class, 'store']);
+Route::get('/skills/{id}', [SkillController::class, 'show']);
+Route::put('/skills/{id}', [SkillController::class, 'update']);
+Route::delete('/skills/{id}', [SkillController::class, 'destroy']);
+
+Route::get('/candidates', [CandidateController::class, 'index']);
+Route::post('/candidates', [SkillController::class, 'store']);
+Route::get('/candidates/{id}', [SkillController::class, 'show']);
+Route::put('/candidates/{id}', [SkillController::class, 'update']);
+Route::delete('/candidates/{id}', [SkillController::class, 'destroy']);
