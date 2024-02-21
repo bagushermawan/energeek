@@ -31,18 +31,21 @@ Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
 Route::get('/jobs', [JobController::class, 'index']);
+Route::get('/jobs/trashed', [JobController::class, 'trashed']);
 Route::post('/jobs', [JobController::class, 'store']);
 Route::get('/jobs/{id}', [JobController::class, 'show']);
 Route::put('/jobs/{id}', [JobController::class, 'update']);
 Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
 
 Route::get('/skills', [SkillController::class, 'index']);
+Route::get('/skills/trashed', [SkillController::class, 'trashed']);
 Route::post('/skills', [SkillController::class, 'store']);
 Route::get('/skills/{id}', [SkillController::class, 'show']);
 Route::put('/skills/{id}', [SkillController::class, 'update']);
 Route::delete('/skills/{id}', [SkillController::class, 'destroy']);
 
 Route::get('/candidates', [CandidateController::class, 'index']);
+Route::get('/candidates/trashed', [CandidateController::class, 'trashed']);
 Route::post('/candidates', [CandidateController::class, 'store']);
 Route::get('/candidates/{id}', [CandidateController::class, 'show']);
 Route::put('/candidates/{id}', [CandidateController::class, 'update']);

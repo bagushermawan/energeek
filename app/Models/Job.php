@@ -12,6 +12,9 @@ class Job extends Model
     public $table = "jobs";
     protected $fillable = [
         'name',
+        'created_by',
+        'updated_by',
+        'deleted_by',
 
     ];
 

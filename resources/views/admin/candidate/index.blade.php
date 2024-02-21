@@ -28,7 +28,9 @@
                                     <th>Email</th>
                                     <th>Tahun Lahir</th>
                                     <th>Skills</th>
-                                     @if (request()->has('withTrashed') && request()->withTrashed == 'true')
+                                    <th>Created By</th>
+                                    <th>Updated By</th>
+                                    @if (request()->has('withTrashed') && request()->withTrashed == 'true')
                                         <th>Deleted at</th>
                                         <th>Deleted by</th>
                                     @endif
@@ -52,6 +54,8 @@
                                                 <span class="badge badge-{{ $color }}">{{ $skill->name }}</span>
                                             @endforeach
                                         </td>
+                                        <td>{{ $a->creator ? $a->creator->name : 'null' }}</td>
+                                        <td>{{ $a->updater ? $a->updater->name : 'null' }}</td>
                                         @if (request()->has('withTrashed') && request()->withTrashed == 'true')
                                             <td>{{ $a->deleted_at ? $a->deleted_at : 'null' }}</td>
                                             <td>{{ $a->deleter ? $a->deleter->name : 'null' }}</td>

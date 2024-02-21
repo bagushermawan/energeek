@@ -12,6 +12,9 @@ class Skill extends Model
     public $table = "skills";
     protected $fillable = [
         'name',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function creator()

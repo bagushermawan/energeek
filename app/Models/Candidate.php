@@ -16,6 +16,9 @@ class Candidate extends Model
         'email',
         'phone',
         'year',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function creator()
