@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\API\CandidateController;
-use App\Http\Controllers\API\JobController;
-use App\Http\Controllers\API\SkillController;
-use App\Http\Controllers\API\SkillSetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\API\JobController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\SkillController;
+use App\Http\Controllers\API\SkillSetController;
+use App\Http\Controllers\API\CandidateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,10 @@ Route::post('/skillsets', [SkillSetController::class, 'store']);
 Route::get('/skillsets/{id}', [SkillSetController::class, 'show']);
 Route::put('/skillsets/{id}', [SkillSetController::class, 'update']);
 Route::delete('/skillsets/{id}', [SkillSetController::class, 'destroy']);
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+});

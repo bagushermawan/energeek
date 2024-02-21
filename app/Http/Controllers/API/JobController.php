@@ -8,6 +8,11 @@ use App\Models\Job;
 
 class JobController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function index()
     {
         $jobs = Job::all();
@@ -36,6 +41,7 @@ class JobController extends Controller
 
         $job = Job::create([
             'name' => $request->name,
+            'created_by' => auth()->id(),
         ]);
 
         return response()->json(['job' => $job, 'message' => 'Job berhasil dibuat'], 201);
