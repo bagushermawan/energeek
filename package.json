@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@iconify/vue": "^4.1.1",
+        "@inertiajs/vue3": "^1.0.0",
+        "@tailwindcss/forms": "^0.5.3",
+        "@vitejs/plugin-vue": "^5.0.0",
+        "@vue/server-renderer": "^3.4.0",
+        "autoprefixer": "^10.4.12",
+        "axios": "^1.6.4",
+        "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^3.2.1",
+        "typescript": "^5.0.2",
+        "vite": "^5.0.0",
+        "vue": "^3.4.0",
+        "vue-tsc": "^1.8.27"
+    },
+    "dependencies": {
+        "@radix-icons/vue": "^1.0.0",
+        "@vueuse/core": "^10.9.0",
+        "bootstrap": "^5.3.3",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.0",
+        "datatables.net": "^2.0.8",
+        "datatables.net-bs5": "^2.0.8",
+        "datatables.net-dt": "^2.0.8",
+        "datatables.net-select-bs5": "^2.0.3",
+        "jquery": "^3.7.1",
+        "radix-vue": "^1.5.0",
+        "tailwind-merge": "^2.2.1",
+        "tailwindcss-animate": "^1.0.7",
+        "vue-sweetalert2": "^5.0.11"
+    }
+}

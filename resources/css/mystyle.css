@@ -1,0 +1,120 @@
+/* src/assets/css/custom.css */
+
+/* Gaya untuk tombol Edit */
+.btn-add {
+  background-color: #26d82f;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background-color: #1ca523;
+}
+.btn-edit {
+  background-color: #17a2b8;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background-color: #138496;
+}
+
+/* Gaya untuk tombol Delete */
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #bd2130;
+}
+
+
+div.dt-container select.dt-input {
+    padding-right: 2.5rem;
+}
+
+.btn:disabled,
+.btn[disabled] {
+    background-color: #6c757d;
+    color: #ffffff;
+    cursor: default;
+    opacity: 0.65;
+}
+
+.swal2-container .swal2-html-container .form-group {
+    margin-bottom: 1rem;
+}
+
+.swal2-container .swal2-html-container .list-group {
+    max-height: 300px; /* Adjust the height as needed */
+    overflow-y: auto;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.swal2-container .swal2-html-container .list-group-item {
+    margin-bottom: 1rem;
+}
+
+.swal2-container .swal2-html-container .list-group-item h5 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.swal2-container .swal2-html-container .form-check-input {
+    margin-right: 0.5rem;
+}
+
+.swal2-container .swal2-html-container .form-check-label {
+    display: flex;
+    align-items: center;
+}
+
+.swal2-container .swal2-html-container .col-6 {
+    padding: 0.5rem;
+}
+
+.swal2-dark {
+    --swal2-title-color: #000;
+    --swal2-text-color: #333;
+    --swal2-confirm-button-background: #3085d6;
+    --swal2-confirm-button-color: #fff;
+    --swal2-cancel-button-color: #aaa;
+    background-color: #19191a;
+}
+
+.swal2-dark .swal2-title {
+color: #e1e1e1;
+}
+
+.swal2-dark .label{
+    color: #e1e1e1;
+}
+
+.swal2-dark .swal2-input{
+    color: #fff;
+}
+
+
+.btn-pink {
+    background-color: #FFE2E5;
+    color: #F1416C;
+}
+.btn-pink:hover {
+    background-color: #fcccd1;
+    color: #da2a56;
+}
