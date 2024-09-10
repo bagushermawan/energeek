@@ -45,7 +45,7 @@ Ikuti langkah-langkah berikut untuk menginstal dan menjalankan aplikasi ini seca
     cp .env.example .env
     ```
 
-    Sesuaikan konfigurasi database dan pengaturan lainnya di file `.env`:
+    Sesuaikan konfigurasi database yang digunakan (MySQL, PostgreSQL, dll) dan pengaturan lainnya di file `.env`:
 
     ```env
     DB_CONNECTION=pgsql
