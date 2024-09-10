@@ -49,10 +49,10 @@
                             label="Permission" icon="icon-park-outline:permissions" />
                     </NavLinkGroup>
                     <NavLinkGroup label="to do">
-                        <NavLink :href="route('console.user.view')" :active="route().current('console.user.view')"
-                            label="Tasks" icon="lucide:users" />
+                        <NavLink :href="route('console.task.view')" :active="route().current('console.task.view')"
+                            label="Tasks" icon="lucide:book-check" />
                         <NavLink :href="route('console.role.view')" :active="route().current('console.role.view')"
-                            label="Category" icon="oui:app-users-roles" />
+                            label="Category" icon="lucide:chart-bar-stacked" />
                     </NavLinkGroup>
                 </div>
             </ScrollArea>

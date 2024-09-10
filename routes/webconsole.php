@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\DashboardConsoleController;
+use App\Http\Controllers\TasksController;
 
 Route::middleware(['auth', 'verified', 'super-admin'])->group(function () {
     // Route::get('/console', function () {
@@ -43,5 +44,12 @@ Route::middleware(['auth', 'verified', 'super-admin'])->group(function () {
     Route::get('/console/permissions/edit/{id}', [PermissionsController::class, 'edit'])->name('console.permission.edit');
     Route::put('/console/permissions/update/{id}', [PermissionsController::class, 'update'])->name('console.permission.update');
     Route::delete('/console/permissions/destroy/{id}', [PermissionsController::class, 'destroy'])->name('console.permission.destroy');
+
+    Route::get('/console/tasks', [TasksController::class, 'index'])->name('console.task.view');
+    Route::get('/console/tasks/ajax', [TasksController::class, 'listtasks'])->name('console.task.ajax');
+    Route::post('/console/tasks/add', [TasksController::class, 'store'])->name('console.task.add');
+    Route::get('/console/tasks/edit/{id}', [TasksController::class, 'edit'])->name('console.task.edit');
+    Route::put('/console/tasks/update/{id}', [TasksController::class, 'update'])->name('console.task.update');
+    Route::delete('/console/tasks/destroy/{id}', [TasksController::class, 'destroy'])->name('console.task.destroy');
 
 });

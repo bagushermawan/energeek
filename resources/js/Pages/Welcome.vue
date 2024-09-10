@@ -122,30 +122,27 @@
             };
         });
 
-         globalErrorMessage.value = '';
+        globalErrorMessage.value = '';
 
         let isValid = true;
 
-        // Validasi nama
         const name = document.getElementById('name')?.value;
         if (!name) {
             errors.value.name = 'Nama wajib diisi';
             isValid = false;
         }
 
-        // Validasi username
         const username = document.getElementById('username')?.value;
         if (!username) {
             errors.value.username = 'Username wajib diisi';
             isValid = false;
         }
 
-        // Validasi email
         const email = document.getElementById('email')?.value;
         if (!email) {
             errors.value.email = 'Email wajib diisi';
             isValid = false;
-        } else if (!/\S+@\S/.test(email)) {
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
             errors.value.email = 'Format email tidak valid';
             isValid = false;
         }
@@ -155,8 +152,9 @@
                 errors.value.todos[index].description = '*';
                 isValid = false;
                 if (!isValid) {
-        globalErrorMessage.value = 'Yang bertanda <span class="text-danger">*</span> wajib diisi'; // Set global error message
-    }
+                    globalErrorMessage.value =
+                        'To Do Yang bertanda <span class="text-danger">*</span> wajib diisi';
+                }
             }
         });
 
@@ -198,7 +196,6 @@
             document.getElementById('username') !.value = '';
             document.getElementById('email') !.value = '';
 
-            // Kosongkan array todos
             todos.value = [];
             initializeTodos();
 
@@ -305,8 +302,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div v-if="globalErrorMessage" class="alert alert-warning" role="alert" v-html="globalErrorMessage">
-</div>
+                        <div v-if="globalErrorMessage" class="alert alert-warning" role="alert"
+                            v-html="globalErrorMessage">
+                        </div>
                         <button type="button" class="btn btn-success" @click="saveData">
                             SIMPAN
                         </button>
